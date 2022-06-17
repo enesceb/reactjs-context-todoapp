@@ -3,7 +3,7 @@ import {useSite , useAuth } from '../context'
 
 
 const Header = () => {
-    const {theme, setTheme} = useSite
+    const {theme, setTheme} = useSite()
     const {user , setUser} = useAuth()
 
     const loginHandle = () => {

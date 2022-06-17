@@ -10,6 +10,7 @@ const Provider = ({children}) => {
     
     useEffect(()=>{
       localStorage.setItem('theme', theme)
+      document.getElementById('root').className = theme
       localStorage.setItem('language', language)
     },[theme, language])
     
