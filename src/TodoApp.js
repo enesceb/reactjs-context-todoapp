@@ -55,8 +55,8 @@ function TodoApp(){
 
      return(
       
-        <div className={`${theme}`}>
-          <main className="main-content bg-white dark:bg-slate-800">
+        <div className={`wrapper ${theme}`}>
+          <main className="main-content dark:text-white">
         <Header  />
       
           <AddTodo todo={state.todo} submitHandle={submitHandle} changeHandle={changeHandle}/>
