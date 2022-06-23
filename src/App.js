@@ -1,8 +1,8 @@
-
-
 import {SiteContext, AuthContex} from "./context/index"
-
+import{Routes, Route} from "react-router-dom"
 import TodoApp from "./TodoApp";
+import Home from "./pages/Home";
+import Login from "./components/Login";
 
 
 
@@ -14,7 +14,10 @@ function App() {
 
     <SiteContext>  
       <AuthContex>
-      <TodoApp/>
+      <Routes>
+      <Route path="/" element={<Login/>}/>
+      <Route path="/Home" element={<Home/>}/>
+      </Routes>
       </AuthContex>
     </SiteContext>
 
