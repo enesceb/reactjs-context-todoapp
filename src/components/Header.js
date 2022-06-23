@@ -1,32 +1,21 @@
-
-import {useSite , useAuth } from '../context'
-
+import { useAuth } from "../context";
+import Login from "./Login";
 
 const Header = () => {
-    const {theme, setTheme} = useSite()
-    const {user , setUser} = useAuth()
+  const { user, setUser} = useAuth();
 
-    const loginHandle = () => {
-        setUser({
-          username : 'enesceb',
-          email: 'enesceb@hotmail.com'
-        })
-    }
+  
 
-    const logoutHandle = () => {
-      setUser(false)
-    }
+  const logoutHandle = () => {
+    setUser(false);
+  };
 
   return (
-    <div>
-        Mevcut tema = {theme} 
-        <button onClick={()=> setTheme(theme => theme === "light"? 'dark': 'light')}> tema değiştirici</button>
-        <hr></hr> 
-     {!user && <button onClick={loginHandle}>giriş yap</button>}
-     {user &&  <button onClick={logoutHandle}> çıkış yap </button>}
-     <pre>{JSON.stringify(user, null, 2)}</pre>
+    <div className="h-[75px] bg-blue-200 flex justify-between items-center px-5 ">
+      <h2 className="m-4 text-2xl font-bold text-white">TodoApp</h2>
+      {!user && <Login/> ||  <button className="h-10 rounded-xl bg-red-500 text-white text-sm px-4"onClick={logoutHandle}>ÇIKIŞ YAP</button>}
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

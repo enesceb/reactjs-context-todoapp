@@ -1,20 +1,25 @@
-import React from 'react'
-import { useSite } from '../context/SiteContext'
-import TodoItem from './TodoItem'
+import React from "react";
+import TodoItem from "./TodoItem";
+import { memo } from "react"
 
-
-const Todos = ( {deleteTodo, todos}) => {
-  const {theme} = useSite()
+const Todos = ({ deleteTodo, todos, toggleTodo }) => {
+ 
   return (
-  <>
-    tema = {theme}
-    <ul>
-      {todos.map((todo, index) =>  
-       <TodoItem todo={todo} deleteTodo={deleteTodo} key={index} index={index}/>
-      )}
-    </ul>
-  </>
-  )
-}
-
-export default Todos
+    <>
+      <div className="flex mb-4 items-center">
+        <ul className="w-full text-gray-500">
+          {todos.map((todo, index) => (
+            <TodoItem
+              todo={todo}
+              deleteTodo={deleteTodo}
+              key={index}
+              index={index}
+              toggleTodo={toggleTodo}
+            />
+          ))}
+        </ul>
+      </div>
+    </>
+  );
+};
+export default memo(Todos);
