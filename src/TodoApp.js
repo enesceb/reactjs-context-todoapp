@@ -4,24 +4,23 @@ import Todos from "./components/Todos";
 import todoReducer from "./reducers/reducer";
 import Header from "./components/Header";
 import Search from "./components/Search";
+import { useAuth } from "./context";
 
 function TodoApp() {
   const [state, dispatch] = useReducer(todoReducer, {
-    todos: [
-      { title: "Yemek yapılacak", completed: false },
-      { title: "Ders çalışılacak", completed: false },
-    ],
+    todos: [ ],
     todo: "",
     search: "",
   });
 
-  // console.log(state.todos)
+  const {user} = useAuth()
 
   const submitHandle = (e) => {
     e.preventDefault();
     dispatch({
       type: "ADD_TODO",
       todo: state.todo,
+      userId: user.id
     });
   };
 
@@ -31,6 +30,7 @@ function TodoApp() {
       value: e.target.value,
     });
   }, []);
+  
   const deleteTodo = useCallback((index) => {
     dispatch({
       type: "DELETE_TODO",

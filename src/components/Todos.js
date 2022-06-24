@@ -1,9 +1,9 @@
 import React from "react";
 import TodoItem from "./TodoItem";
-import { memo } from "react"
+
 
 const Todos = ({ deleteTodo, todos, toggleTodo }) => {
- 
+
   return (
     <>
       <div className="flex mb-4 items-center">
@@ -22,4 +22,4 @@ const Todos = ({ deleteTodo, todos, toggleTodo }) => {
     </>
   );
 };
-export default memo(Todos);
+export default Todos;

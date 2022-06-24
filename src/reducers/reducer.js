@@ -10,12 +10,12 @@ export default function reducer(state, action) {
         ...state,
         todo: "",
         todos: [
-    
           {
             title: action.todo,
             completed: false,
+            userId: action.userId
           },
-                ...state.todos,
+          ...state.todos,
         ],
       };
     case "DELETE_TODO":
@@ -24,17 +24,14 @@ export default function reducer(state, action) {
         todos: [...state.todos.filter((todo, index) => index !== action.index)],
       };
     case "TOGGLE_TODO":
-    
       return {
         ...state,
         todos: [
           ...state.todos.map((todo, index) => {
             if (action.index === index) {
-              
               todo.completed = !todo.completed;
-             
             }
-            return todo
+            return todo;
           }),
         ],
       };
