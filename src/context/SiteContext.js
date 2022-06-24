@@ -7,12 +7,14 @@ const Context = createContext();
 const Provider = ({children}) => {
     const [theme, setTheme] = useState(localStorage.getItem('theme')||'light')
     const [language, setLanguage] = useState('tr')
+    const [todo, setTodo] = useState([])
     
     useEffect(()=>{
       localStorage.setItem('theme', theme)
+      localStorage.setItem('todo', todo)
       document.getElementById('root').className = theme
       localStorage.setItem('language', language)
-    },[theme, language])
+    },[theme, language, todo])
     
     const data ={
       theme,

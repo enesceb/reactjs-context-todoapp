@@ -1,4 +1,4 @@
-import React, { useCallback, useReducer, useMemo } from "react";
+import React, { useCallback, useReducer, useMemo, useEffect } from "react";
 import AddTodo from "./components/AddTodo";
 import Todos from "./components/Todos";
 import todoReducer from "./reducers/reducer";
@@ -6,17 +6,19 @@ import Header from "./components/Header";
 import Search from "./components/Search";
 import { useAuth } from "./context";
 
+
+
 function TodoApp() {
   const [state, dispatch] = useReducer(todoReducer, {
-    todos: [
-      {title:"enes todo", completed: false , userId:1},
-      {title:"faruk todo", completed: true , userId:2}
-    ],
+    todos: localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : [],
     todo: "",
     search: "",
   });
 
   const {user} = useAuth()
+  useEffect(() => {
+		localStorage.setItem('todos', JSON.stringify(state.todos))
+	}, [state.todos]);
 
   const submitHandle = (e) => {
     e.preventDefault();
