@@ -13,7 +13,7 @@ export default function reducer(state, action) {
           {
             title: action.todo,
             completed: false,
-            userId: action.userId
+            userId: action.userId,
           },
           ...state.todos,
         ],
@@ -40,6 +40,17 @@ export default function reducer(state, action) {
         ...state,
         search: action.value,
       };
+    case "UPDATE_ONLY_ME":
+      return {
+        ...state,
+        onlyMe: !state.onlyMe,
+      };
+    case "UPDATE_FILTER_COMPLETED":
+      return {
+        ...state,
+        filterCompleted: action.value,
+      };
+
     default:
       break;
   }
