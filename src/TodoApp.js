@@ -8,7 +8,10 @@ import { useAuth } from "./context";
 
 function TodoApp() {
   const [state, dispatch] = useReducer(todoReducer, {
-    todos: [ ],
+    todos: [
+      {title:"enes todo", completed: false , userId:1},
+      {title:"faruk todo", completed: true , userId:2}
+    ],
     todo: "",
     search: "",
   });

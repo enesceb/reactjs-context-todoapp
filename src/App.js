@@ -1,28 +1,20 @@
-import {SiteContext, AuthContex} from "./context/index"
-import{Routes, Route} from "react-router-dom"
-import TodoApp from "./TodoApp";
+import { SiteContext, AuthContex } from "./context/index";
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./components/Login";
 
 
-
-
 function App() {
-
-
   return (
-
-    <SiteContext>  
+    <SiteContext>
       <AuthContex>
-      <Routes>
-      <Route path="/" element={<Login/>}/>
-      <Route path="/Home" element={<Home/>}/>
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/Home" element={<Home />} />
+        </Routes>
       </AuthContex>
     </SiteContext>
-
   );
 }
 
 export default App;
- 
